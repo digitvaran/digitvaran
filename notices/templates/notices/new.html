@@ -1,0 +1,11 @@
+{%extends 'base.html'%}
+
+{%block body%}
+    <div class='form-responsive'>
+        <form action={%url 'notices:new'%} method='post'>
+        {%csrf_token%}
+        {{form|crispy}}
+        <input type='submit' class='button btn-submit'/>
+        </form>
+    </div>
+{%endblock%}

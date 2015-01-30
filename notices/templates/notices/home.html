@@ -1,0 +1,39 @@
+{%extends 'base.html'%}
+{%block body%}
+    <div class='container'>
+        <p class='lead'>
+            Showing notices in date range today+
+            <input id='time_delta' type='text' class='input' value='0'/>
+            Days.
+        </p>
+        <script>
+
+        </script>
+    </div>
+    <div class='table-responsive'>
+        <table class='table table-hover table-bordered'>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Details</th>
+                    <th>Event Date</th>
+                    <th>Venue</th>
+                    <th>Society</th>
+                    <th>Publish date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for n in notices%}
+                    <tr>
+                        <td>{{n.title|capfirst}}</td>
+                        <td>{{n.details|truncatewords:5}}</td>
+                        <td>{{n.event_date}}</td>
+                        <td>{{n.venue|capfirst}}</td>
+                        <td>{{n.soc|capfirst}}</td>
+                        <td>{{n.publish_date}}</td>
+                    </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+{%endblock%}
