@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-import .views
+from notices import views
 urlpatterns = patterns('',
     url(r'^$', views.home,name='home'),
     url(r'^(?P<delta>\d+)/$',views.timeperiod,name='timeperiod_view'),

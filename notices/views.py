@@ -1,11 +1,11 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from datetime import timedelta
-import .models
+from notices import models
 from django.utils import timezone
 
 def home(request):
     "Redirect to 0 delta timeperiod view"
-    return redirect('notices:timeperiod_view',delta=delta)
+    return redirect('notices:timeperiod_view',delta=0)
 
 
 def success_save(request):
