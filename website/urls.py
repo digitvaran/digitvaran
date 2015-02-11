@@ -5,4 +5,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$',views.home,name='home'),
     url(r'^notice/',include('notices.urls',namespace='notices')),
+    url(r'^resources/',include('resources.urls',namespace='resources')),
 )

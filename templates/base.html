@@ -31,6 +31,7 @@
     <body>
     <div class='container text-left'>
     <h1>Digitvaran</h1>
+        <nav class='navbar navbar-inverse' role='navigation'>
         <div class='navbar-header'>
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span>
@@ -43,10 +44,11 @@
             <ul class='nav navbar-nav'>
                 <li><a href={%url 'home' %}>Home</a></li>
                 <li><a href={%url 'notices:home' %}>Notices</a></li>
+                <li><a href={%url 'resources:home'%}>Resources</a></li>
             </ul>
         </div><!-- Navbar-collapes-->
+        </nav>
     </div><!-- container text-left-->
-    <hr>
     <div class='container'>
     {%block body%}
     <div class='container text-center'>

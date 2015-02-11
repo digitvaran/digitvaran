@@ -5,13 +5,11 @@
             Showing notices in date range today+
             <input id='time_delta' type='text' class='input' value='0'/>
             Days.
+            <button class='btn btn-success' id='go_button' >Go </button>
         </p>
-        <script>
-
-        </script>
     </div>
     <div class='table-responsive'>
-        <table class='table table-hover table-bordered'>
+        <table id='noticeboard' class='table table-hover table-bordered'>
             <thead>
                 <tr>
                     <th>Title</th>
@@ -35,5 +33,22 @@
                 {%endfor%}
             </tbody>
         </table>
+        <script>
+            document.getElementById('go_button').onclick=function(){
+            var value=document.getElementById('time_delta').value;
+            var current=window.location.href;
+            var list=current.split('/');
+            list.pop(list.length-1);//Remove last /
+            list.pop(list.length-1);//Remove delta
+            var len=list.length;
+            var new_url="http://";
+            for(var i=2; i<len; i++){
+                new_url+=list[i]+'/';
+                }
+            new_url+=value+'/';
+            window.location.href=new_url;
+            }
+            
+        </script>
     </div>
 {%endblock%}

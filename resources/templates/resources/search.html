@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+{%block body%}
+        <div role='form'>
+            <form class='form' action={%url 'resources:search'%} method='post'>
+                {%csrf_token%}
+                <input type='text' class='form-control' placeholder='Search'/>
+                <input type='submit' class='form-control btn btn-success' value='Search'></button>
+            </form>
+        </div>
+        <hr>
+        {%if results%}
+        <div id='results' class='container'>
+            <div class='table-responsive'>
+                <table class='table table-hover'>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Tags</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for res in results%}
+                        <tr>
+                            <td>{{res.name|capfirst}}</td>
+                            <td>{{res.description|truncatewords:5}}</td>
+                            <td>{%for t in res.tags%}
+                                {{t}}
+                                {%endfor%}
+                            </td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {%endif%}
+{%endblock%}
