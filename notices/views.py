@@ -5,15 +5,11 @@ from django.utils import timezone
 
 def home(request):
     "Redirect to 0 delta timeperiod view"
-    return redirect('notices:timeperiod_view',delta=0)
-
-
+    return redirect('notices:timeperiod_view',delta=10)
 def success_save(request):
     data={}
     template='notices/success.html'
     return render(request,template,data)
-
-
 def new_notice(request):
     data={}
     template='notices/new.html'
@@ -27,7 +23,6 @@ def new_notice(request):
         else:
             data['form']=form
     return render(request,template,data)
-
 def timeperiod(request,delta):
     "Show notices with zero day delta"
     data={}

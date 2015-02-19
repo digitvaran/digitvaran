@@ -4,8 +4,9 @@
     <div class='form-responsive'>
         <form action={%url 'notices:new'%} method='post'>
         {%csrf_token%}
+        {%load crispy_forms_tags%}
         {{form|crispy}}
-        <input type='submit' class='button btn-submit'/>
+        <input type='submit' class='btn btn-success'/>
         </form>
     </div>
 {%endblock%}

@@ -4,6 +4,7 @@ from django.utils import timezone
 
 class Society(models.Model):
     "Society in college"
+    def __str__(self):return self.name
     name=models.CharField(max_length=50)
 class Notice(models.Model):
     "A notice"
