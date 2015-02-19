@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{%block body%}
+    <div class='lead'>
+        <table id='resource_table' class='table table-bordered table-hover'>
+            <thead>
+                <tr>
+                    <th>Resource Name</th>
+                    <th>Resource Link</th>
+                    <th>Resource description</th>
+                </tr>
+            </thead>
+            <tbody>
+            {%for res in resources%}
+                <tr>
+                    <td>{{res.name}}</td>
+                    <td><a href={{res.link}}>Link {{forloop.counter}}</a></td>
+                    <td>{{res.description|truncatewords:15}}</td>
+                </tr>
+            {%endfor%}
+            </tbody>
+        </table>
+    </div>
+{%endblock%}

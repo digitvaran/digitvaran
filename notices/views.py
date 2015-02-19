@@ -42,4 +42,5 @@ def timeperiod(request,delta):
         end=othertime
     notices=models.Notice.objects.filter(publish_date__lte=timezone.now(),event_date__lte=end,event_date__gte=start)
     data['notices']=notices
+    data['timeperiod']=delta
     return render(request,template,data)

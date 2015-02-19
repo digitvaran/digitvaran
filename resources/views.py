@@ -11,7 +11,15 @@ def search(request):
     data={}
     template='resources/search.html'
     if request.method=='GET':
-        pass
+        data['placeholder']='Search'
     if request.method=='POST':
-        data['results']=models.Tag.objects.all()
+        searchstr=request.POST.get('searchstring')
+        data['placeholder']=searchstr
+        data['results']=models.Audiobook.objects.filter(description__icontains=searchstr)
+    return render(request,template,data)
+def browse(request):
+    "Browse resources"
+    data={}
+    template='resources/browse.html'
+    data['resources']=models.Audiobook.objects.all()
     return render(request,template,data)

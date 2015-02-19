@@ -1,9 +1,9 @@
 {%extends 'base.html'%}
 {%block body%}
         <div role='form'>
-            <form class='form' action={%url 'resources:search'%} method='post'>
+            <form id='search' class='form' action={%url 'resources:search'%} method='post'>
                 {%csrf_token%}
-                <input type='text' class='form-control' placeholder='Search'/>
+                <input  name='searchstring' type='text' class='form-control' placeholder='{{placeholder}}'/>
                 <input type='submit' class='form-control btn btn-success' value='Search'></button>
             </form>
         </div>
