@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+{%block body%}
+<div class='container'>
+    <label for='program'>Program number</label>
+    <input type='text' class='input' id='program'></input>
+    <label for='semester'>Semester number</label>
+    <input type='text' class='input' id='semester'></input>
+    <label for='month'>Month number</label>
+    <input type='text' class='input' id='month'></input>
+    <button class='btn btn-success' id='go_button'>Get Attendance</button>
+</div>
+<script>
+    document.getElementById('go_button').onclick=function(){
+        console.log('called');
+        var prog=document.getElementById('program').value;
+        var sem=document.getElementById('semester').value;
+        var month=document.getElementById('month').value;
+        var list=window.location.href.split('/');
+        list.pop(list.length-1);
+        list.pop(list.length-1);
+        var len=list.length;
+        var new_url="http://";
+        for(var i=2;2<len;++i){
+            new_url+=list[i]+'/';
+            }
+        new_url+=prog+'/'+sem+'/'+month+'/';
+        window.location.href=new_url;
+        }
+</script>
+{%endblock%}

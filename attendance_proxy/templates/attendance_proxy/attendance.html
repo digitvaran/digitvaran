@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{%block body%}
+    <table class='table table-responsive'>
+        <thead>
+            <tr>
+                {%for sub in subjects%}
+                <th>Lecture-{{sub}}</th>
+                <th>Tutorial-{{sub}}</th>
+                <th>Practical-{{sub}}</th>
+                {%endfor%}
+            </tr>
+        </thead>
+        <tbody>
+            {%for student in students%}
+                <tr>
+                    {%for td in student%}
+                    <td>{{td}}</td>
+                    {%endfor%}
+                </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+{%endblock%}

@@ -6,4 +6,5 @@ urlpatterns = patterns('',
     url(r'^$',views.home,name='home'),
     url(r'^notice/',include('notices.urls',namespace='notices')),
     url(r'^resources/',include('resources.urls',namespace='resources')),
+    url(r'^attendance/',include('attendance_proxy.urls',namespace='attendance')),
 )
