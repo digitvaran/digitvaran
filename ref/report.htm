@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html lang="en-US" dir="ltr">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
+<title>St. Stephens College - Attendance System</title>
+<link type="text/css" rel="stylesheet" href="/css/main.r302.css">
+<style type="text/css">
+table.gcgrid > tbody tr:hover{cursor:pointer;}
+</style>
+</head>
+<body>
+	<div id="header">
+		<div id="logo"><a title="St. Stephen's College" alt="St. Stephen's College" href="http://www.ststephens.edu/" target="_blank"><img src="/images/logo.png" border="0" height='81' width='487' /></a></div>
+		<div class="buildno">476-28102013-0501</div>
+	</div>
+
+	<div id="wrapper" class="wrapper">
+		<div class="page_title">
+			<p style="width:777px;">Attendance <small style="float:right;">Academic Year 2014 - 15 </small></p>
+		</div>
+		<div id="cont-1-1" class="appsteps">
+			<div class="info_strip_container">
+				<div id="message_strip" class="DisplayNone"></div>
+			</div>
+			
+		<div id="tabs-container">
+			<ul id="tabs">
+				<li id="month_summary" class="active"><a title="Attendance" alt="Attendance">Attendance</a></li>
+				<li id="semester_summary"><a title="Semester End Report" alt="Semester End Report">Semester End Report</a></li>
+			</ul>
+		</div>
+		<div id="wrap">
+			<div class="summary_report">
+				<form name="find_attendance" id="find_attendance" action="/" method="post">
+				<div class="selection_panel">
+				<div class="group_Block" style="padding-left: 0px">
+					<div class="widget_Box" style="padding-left: 0px"><label for="program">Program</label> <select
+						name="program" id="program" class="select-input text-200" style="width: 300px">
+						<option value="">--select-program--</option>
+						<option value="1">I YEAR B. A. PROGRAMME</option>
+						<option value="2">I YEAR ECONOMICS</option>
+						<option value="3">I YEAR ENGLISH</option>
+						<option value="4">I YEAR HISTORY</option>
+						<option value="5">I YEAR PHILOSOPHY</option>
+						<option value="6">I YEAR SANSKRIT</option>
+						<option value="7">I YEAR MATHEMATICS</option>
+						<option value="8">I YEAR CHEMISTRY</option>
+						<option value="9">I YEAR PHYSICS</option>
+						<option value="10">I YEAR B. SC. PROG. CHEMISTRY</option>
+						<option value="11">I YEAR B. SC. PROG. COMPUTER SCIENCE</option>
+						<option value="12">II YEAR B. A. PROGRAMME</option>
+						<option value="13">II YEAR B. A. HONOURS ECONOMICS -SEC A</option>
+						<option value="38">II YEAR B. A. HONOURS ECONOMICS -SEC B</option>
+						<option value="14">II YEAR B. A. HONOURS ENGLISH -SEC A</option>
+						<option value="39">II YEAR B. A. HONOURS ENGLISH -SEC B</option>
+						<option value="15">II YEAR B. A. HONOURS HISTORY</option>
+						<option value="16">II YEAR B. A. HONOURS PHILOSOPHY</option>
+						<option value="17">II YEAR B. A. HONOURS SANSKRIT</option>
+						<option value="18">II YEAR B. SC. HONOURS MATHEMATICS</option>
+						<option value="19">II YEAR B. SC. HONOURS CHEMISTRY</option>
+						<option value="20">II YEAR B. SC. HONOURS PHYSICS</option>
+						<option value="21">II YEAR B. SC. PROG. COMPUTER SCIENCE</option>
+						<option value="22">II YEAR B. SC. PROG. CHEMISTRY</option>
+						<option value="23">III YEAR B. A. PROGRAMME</option>
+						<option value="24">III YEAR B. A. HONOURS ECONOMICS</option>
+						<option value="25">III YEAR B. A. HONOURS ENGLISH</option>
+						<option value="26">III YEAR B. A. HONOURS HISTORY</option>
+						<option value="27">III YEAR B. A. HONOURS PHILOSOPHY</option>
+						<option value="28">III YEAR B. A. HONOURS SANSKRIT</option>
+						<option value="29">III YEAR B. SC. HONOURS MATHEMATICS</option>
+						<option value="30">III YEAR B. SC. HONOURS CHEMISTRY</option>
+						<option value="31">III YEAR B. SC. HONOURS PHYSICS</option>
+						<option value="32">III YEAR B. SC. PROG. CHEMISTRY</option>
+						<option value="33">III YEAR B. SC. PROG. COMPUTER SCIENCE</option>
+						</select>
+						<p id="programError" class="error-No-msg"></p>
+					</div>
+					<div class="widget_Box" id="semesterDiv"><label for="semester">Semester</label> 
+						<select name="semester" id="semester" class="select-input text-input-100">
+							<option value="">--select-semester--</option>
+						</select>
+						<p id="semesterError" class="error-No-msg"></p>
+					</div>
+					<div class="widget_Box"  id="monthDiv"><label for="month">Month</label> 
+						<select	name="month" id="month" class="select-input text-100" style="width:120px">
+							<option value="">--select-month--</option>
+							<option value="all">All</option>
+						</select>
+						<p id="monthError" class="error-No-msg"></p>
+					</div>
+				</div>
+				
+				</div>
+				<div class="legend" id="legend" >
+					<p><strong>Disclaimer:</strong> The Attendance Marks displayed are based on the attendance records entered till date. Please note that these marks may change in time, till the end of the semester/year.<p>
+						<span><strong>HE</strong> - House Examination Marks</span>
+						<span><strong>Assign</strong> - Assignment Marks</span>
+						<span><strong>Atten</strong> - Attendance Marks</span>
+						<span><strong>CT</strong> - Class Test</span>
+						<span><strong>GD</strong> - Group Discussion</span>
+					</p>
+				</div>
+				<div id="report_block">
+					<!-- Grid filter -->
+					<div id="filter-box">
+						<label for="filter" style="display:none;">Filter :</label>
+						<input type="text" style="display:none;" id="filter" class="text-input text-100"/>
+					</div>
+					<div id="attendance-data" style="display:none;overflow-x: scroll;">
+					</div>
+					<div id="panel">
+						<div id="pagecontrol">
+							<label for="pagesize" class="displayInline">Rows per page: </label>
+							<select id="pagesize" name="pagesize" class="select-input text-40">
+								<option value="5">5</option>
+								<option value="10">10</option>
+								<option value="15">15</option>
+								<option value="20">20</option>
+								<option value="25">25</option>
+								<option value="30">30</option>
+								<option value="40">40</option>
+								<option value="50">50</option>
+								<option value="100">100</option>
+							</select>
+						</div>
+						<div id="paginator"></div>
+					</div>
+				</div>
+				</form>
+			</div>
+			</div>
+		</div>
+		<div id="overlayDIV" class="DisplayNone"></div>
+		<script type="text/javascript" src="/js/gcattendance.min.r517.js"></script>
+	</div>
+<div id="footer">
+	<span class="copyright"> <a class="logo" target="_blank" href="http://formistry.com/"></a> </span>
+</div>
+<script>
+print_grid.init_events();
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31630267-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>

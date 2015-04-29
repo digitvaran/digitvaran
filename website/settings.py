@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'notices',
     'chat',
     'resources',
+    'attendance_proxy',
 )
 
 MIDDLEWARE_CLASSES = (
