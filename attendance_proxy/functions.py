@@ -15,7 +15,12 @@ def get_attendance(program,semester,month):
     display = Display(visible=0, size=(800, 600))
     display.start()
     # we can now start Firefox and it will run inside the virtual display
-    browser = webdriver.Firefox()
+    for retry in range(3):
+        try:
+            browser = webdriver.Firefox()
+            break
+        except:
+            time.sleep(3)
     browser.implicitly_wait(5)
     browser.get('http://sscattendance.formistry.com/report/')
     prog=Select(browser.find_element_by_id('program'))
