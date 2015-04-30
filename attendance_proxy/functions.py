@@ -1,4 +1,5 @@
 from pyvirtualdisplay import Display
+from selenium.webdriver.support.ui import Select
 from selenium import webdriver
 from bs4 import BeautifulSoup
 keys=webdriver.common.keys.Keys
@@ -15,20 +16,16 @@ def get_attendance(program,semester,month):
     display.start()
     # we can now start Firefox and it will run inside the virtual display
     browser = webdriver.Firefox()
+    browser.implicitly_wait(5)
     browser.get('http://sscattendance.formistry.com/report/')
-    prog=browser.find_element_by_id('program')
-    sem=browser.find_element_by_id('semester')
-    mth=browser.find_element_by_id('month')
+    prog=Select(browser.find_element_by_id('program'))
+    sem=Select(browser.find_element_by_id('semester'))
+    mth=Select(browser.find_element_by_id('month'))
     #select appropriate options
-    for i in range(program):
-        prog.send_keys(keys.DOWN)
-    prog.send_keys(keys.ENTER)
-    for i in range(semester):
-        sem.send_keys(keys.DOWN)
-    sem.send_keys(keys.ENTER)
-    for i in range(month):
-        mth.send_keys(keys.DOWN)
-    mth.send_keys(keys.ENTER)
+    prog.select_by_value(str(program))
+    sem.select_by_value(str(semester))
+    if month==0:month='all'
+    mth.select_by_value(str(month))
     #------scroll to end and extract records
     pagesize=browser.find_element_by_id('pagesize')
     scroll_element_into_view(browser,pagesize)
@@ -56,14 +53,15 @@ def get_attendance(program,semester,month):
         data=[student_name]
         #for every subject
         for i in range(len(header)):
-            la,ld=columns[i].text ,columns[i+1].text
-            ta,td=columns[i+2].text ,columns[i+3].text
-            pa,pd=columns[i+4].text ,columns[i+5].text
+            ld,la=columns[i].text ,columns[i+1].text
+            td,ta=columns[i+2].text ,columns[i+3].text
+            pd,pa=columns[i+4].text ,columns[i+5].text
             data.append(str(la)+'/'+str(ld))
             data.append(str(ta)+'/'+str(td))
             data.append(str(pa)+'/'+str(pd))
         students.append(data)
-    return students,headers
+    header.insert(0,'Student Name')
+    return students,header
 
 if __name__=='__main__':
     data=get_attendance(33,1,1)

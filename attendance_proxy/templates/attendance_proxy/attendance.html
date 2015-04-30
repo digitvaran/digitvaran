@@ -4,9 +4,11 @@
         <thead>
             <tr>
                 {%for sub in subjects%}
+                {%if forloop.first%}<th>{{sub}}</th>{%else%}
                 <th>Lecture-{{sub}}</th>
                 <th>Tutorial-{{sub}}</th>
                 <th>Practical-{{sub}}</th>
+                {%endif%}
                 {%endfor%}
             </tr>
         </thead>
